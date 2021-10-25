@@ -1,2 +1,2 @@
 # sensu-scripts
-Scripts repo for Sensu
+This is just a dummy public repo to play around with Sensu scripts.
