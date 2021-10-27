@@ -6,7 +6,7 @@ maximum=$1
 compaction=`nodetool compactionstats`
 
 # get the number
-compaction_stats = `sed -e "s/pending tasks\: //"`
+compaction_stats=`echo $compaction | sed -e "s/pending tasks\: //"`
 
 echo "${compaction}"
 
