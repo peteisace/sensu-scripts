@@ -1,1 +1,0 @@
-../cassandra/metrics_threeminute_check.sh
