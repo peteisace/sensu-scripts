@@ -2,6 +2,7 @@
 
 since_seconds=$1
 min_found=${2:-0}
+tail=${3:-10}
 
 # get the date in milliseconds
 current_date=`date +%s%3N`
@@ -11,7 +12,7 @@ since_ms=$(($since_seconds*1000))
 current_date=$(($current_date-$since_ms))
 
 # now execute our query
-cqlout=`cqlsh -e "SELECT COUNT(*) FROM ts.metrics WHERE time >= minTimeUuid(${current_date}) ALLOW FILTERING" | tail -n 11`
+cqlout=`cqlsh -e "SELECT COUNT(*) FROM ts.metrics WHERE time >= minTimeUuid(${current_date}) ALLOW FILTERING" | tail -n ${tail}`
 echo "${cqlout}"
 
 count=`echo "${cqlout}" | grep -no "[0-9]\\+" | grep "4:" | sed -e "s/4://"`
